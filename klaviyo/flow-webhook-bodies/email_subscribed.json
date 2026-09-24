@@ -2,6 +2,6 @@
   "type": "EmailSubscribed",
   "klaviyoProfileId": "{{ person.KlaviyoID }}",
   "email": "{{ person.email|default:'' }}",
-  "phone": "{{ person.phone_number|default:'' }}"
+  "phone": "{{ person.phone_number|default:'' }}",
   "timestamp": "{% now 'c' %}"
 }
