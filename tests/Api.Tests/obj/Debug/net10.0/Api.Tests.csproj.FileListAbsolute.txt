@@ -1,0 +1,7 @@
+/home/winhlp64/srv/git/klaviyo-local-webhooks/tests/Api.Tests/bin/Debug/net10.0/.msCoverageSourceRootsMapping_Api.Tests
+/home/winhlp64/srv/git/klaviyo-local-webhooks/tests/Api.Tests/obj/Debug/net10.0/Api.Tests.csproj.AssemblyReference.cache
+/home/winhlp64/srv/git/klaviyo-local-webhooks/tests/Api.Tests/obj/Debug/net10.0/MvcTestingAppManifest.json
+/home/winhlp64/srv/git/klaviyo-local-webhooks/tests/Api.Tests/obj/Debug/net10.0/Api.Tests.GeneratedMSBuildEditorConfig.editorconfig
+/home/winhlp64/srv/git/klaviyo-local-webhooks/tests/Api.Tests/obj/Debug/net10.0/Api.Tests.AssemblyInfoInputs.cache
+/home/winhlp64/srv/git/klaviyo-local-webhooks/tests/Api.Tests/obj/Debug/net10.0/Api.Tests.AssemblyInfo.cs
+/home/winhlp64/srv/git/klaviyo-local-webhooks/tests/Api.Tests/obj/Debug/net10.0/Api.Tests.csproj.CoreCompileInputs.cache

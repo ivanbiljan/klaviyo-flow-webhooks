@@ -1,0 +1,136 @@
+### Drives the Klaviyo SANDBOX account so the consent flows fire and hit your tunnel.
+### Works in Visual Studio / Rider / VS Code REST Client.
+###
+### Put the sandbox private key (scopes: profiles:write, subscriptions:write, lists:read)
+### in an untracked http-client.env.json / .env. Never the production key.
+### Use a fresh alias per run (bump @run) so re-entry and suppression rules don't hide the event.
+
+@klaviyoKey = {{$dotenv KLAVIYO_SANDBOX_PRIVATE_KEY}}
+@dev = ivan
+@run = 001
+@email = qa+{{dev}}-{{run}}@yourcompany.com
+@phone = +15005550006
+@listId = REPLACE_WITH_SANDBOX_TEST_LIST_ID
+@revision = 2025-10-15
+
+### Subscribe to EMAIL marketing -> "Subscribed to Email Marketing" flow
+POST https://a.klaviyo.com/api/profile-subscription-bulk-create-jobs
+Authorization: Klaviyo-API-Key {{klaviyoKey}}
+revision: {{revision}}
+Content-Type: application/vnd.api+json
+Accept: application/vnd.api+json
+
+{
+  "data": {
+    "type": "profile-subscription-bulk-create-job",
+    "attributes": {
+      "custom_source": "local-webhook-test",
+      "profiles": {
+        "data": [
+          {
+            "type": "profile",
+            "attributes": {
+              "email": "{{email}}",
+              "subscriptions": { "email": { "marketing": { "consent": "SUBSCRIBED" } } }
+            }
+          }
+        ]
+      }
+    },
+    "relationships": { "list": { "data": { "type": "list", "id": "{{listId}}" } } }
+  }
+}
+
+### Unsubscribe from EMAIL marketing -> "Unsubscribed from Email Marketing" flow
+POST https://a.klaviyo.com/api/profile-subscription-bulk-delete-jobs
+Authorization: Klaviyo-API-Key {{klaviyoKey}}
+revision: {{revision}}
+Content-Type: application/vnd.api+json
+Accept: application/vnd.api+json
+
+{
+  "data": {
+    "type": "profile-subscription-bulk-delete-job",
+    "attributes": {
+      "profiles": {
+        "data": [
+          {
+            "type": "profile",
+            "attributes": {
+              "email": "{{email}}",
+              "subscriptions": { "email": { "marketing": { "consent": "UNSUBSCRIBED" } } }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+
+### Subscribe to SMS marketing (needs SMS set up on the sandbox account)
+POST https://a.klaviyo.com/api/profile-subscription-bulk-create-jobs
+Authorization: Klaviyo-API-Key {{klaviyoKey}}
+revision: {{revision}}
+Content-Type: application/vnd.api+json
+Accept: application/vnd.api+json
+
+{
+  "data": {
+    "type": "profile-subscription-bulk-create-job",
+    "attributes": {
+      "custom_source": "local-webhook-test",
+      "profiles": {
+        "data": [
+          {
+            "type": "profile",
+            "attributes": {
+              "email": "{{email}}",
+              "phone_number": "{{phone}}",
+              "subscriptions": { "sms": { "marketing": { "consent": "SUBSCRIBED" } } }
+            }
+          }
+        ]
+      }
+    },
+    "relationships": { "list": { "data": { "type": "list", "id": "{{listId}}" } } }
+  }
+}
+
+### Unsubscribe from SMS marketing
+POST https://a.klaviyo.com/api/profile-subscription-bulk-delete-jobs
+Authorization: Klaviyo-API-Key {{klaviyoKey}}
+revision: {{revision}}
+Content-Type: application/vnd.api+json
+Accept: application/vnd.api+json
+
+{
+  "data": {
+    "type": "profile-subscription-bulk-delete-job",
+    "attributes": {
+      "profiles": {
+        "data": [
+          {
+            "type": "profile",
+            "attributes": {
+              "phone_number": "{{phone}}",
+              "subscriptions": { "sms": { "marketing": { "consent": "UNSUBSCRIBED" } } }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+
+### Smoke test the tunnel + secret without Klaviyo (replace the host with your tunnel URL)
+POST https://acme-klaviyo.ngrok-free.app/webhooks/klaviyo/consent
+X-Klaviyo-Webhook-Secret: {{$dotenv KLAVIYO_WEBHOOK_SECRET}}
+ngrok-skip-browser-warning: true
+Content-Type: application/json
+
+{
+  "type": "email_unsubscribed",
+  "klaviyoProfileId": "01TESTPROFILE",
+  "email": "{{email}}",
+  "phone": ""
+}

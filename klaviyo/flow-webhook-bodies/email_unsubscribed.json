@@ -1,0 +1,6 @@
+{
+  "type": "email_unsubscribed",
+  "klaviyoProfileId": "{{ person.KlaviyoID }}",
+  "email": "{{ person.email|default:'' }}",
+  "phone": "{{ person.phone_number|default:'' }}"
+}

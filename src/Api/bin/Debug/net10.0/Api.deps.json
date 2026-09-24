@@ -1,0 +1,60 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "Api/1.0.0": {
+        "dependencies": {
+          "Immediate.Apis": "6.4.0",
+          "Immediate.Handlers": "4.2.0"
+        },
+        "runtime": {
+          "Api.dll": {}
+        }
+      },
+      "Immediate.Apis/6.4.0": {
+        "dependencies": {
+          "Immediate.Handlers": "4.2.0"
+        },
+        "runtime": {
+          "lib/net10.0/Immediate.Apis.Shared.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.4.0.0"
+          }
+        }
+      },
+      "Immediate.Handlers/4.2.0": {
+        "runtime": {
+          "lib/net10.0/Immediate.Handlers.Shared.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.2.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Api/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Immediate.Apis/6.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-F5HS3Bkzk0wUqPgUq0PyhOz7ZYQpISPrgW+M9/XMNwwJvV0xDK8zzzuo7K1SQi/SSShdyS4qVmRnHQm2I3W+0g==",
+      "path": "immediate.apis/6.4.0",
+      "hashPath": "immediate.apis.6.4.0.nupkg.sha512"
+    },
+    "Immediate.Handlers/4.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-GVegA32Emj2bedtKgqyZcKUBvhpkSMgaxXCW1x6MAX/jnq7irfWO6+YD8njU8qnxO/gYKyWx63b/X49WB2qC5A==",
+      "path": "immediate.handlers/4.2.0",
+      "hashPath": "immediate.handlers.4.2.0.nupkg.sha512"
+    }
+  }
+}

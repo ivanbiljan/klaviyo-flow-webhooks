@@ -1,0 +1,43 @@
+{
+  "data": [
+    {
+      "external_id": "4L3cwQae2TX",
+      "payload": {
+        "data": {
+          "type": "event",
+          "id": "4L3cwQae2TX",
+          "attributes": {
+            "timestamp": 1700503941,
+            "event_properties": {
+              "List": "Local webhook tests",
+              "Method": "API"
+            },
+            "datetime": "2026-09-24T00:50:00+00:00",
+            "uuid": "00000000-0000-0000-0000-000000000000"
+          },
+          "relationships": {
+            "profile": {
+              "data": {
+                "type": "profile",
+                "id": "01JTESTPROFILE0000000000"
+              }
+            },
+            "metric": {
+              "data": {
+                "type": "metric",
+                "id": "Utt3N2"
+              }
+            }
+          }
+        }
+      },
+      "topic": "event:klaviyo.unsubscribed_from_email_marketing"
+    }
+  ],
+  "meta": {
+    "klaviyo_webhook_id": "a8b890458b4bbfaa26d961471b83c101d6de23bd826e7e5173a15310985ec3cb",
+    "timestamp": "2026-09-24T00:50:01.891446+00:00",
+    "klaviyo_account_id": "abc123",
+    "version": "2025-10-15"
+  }
+}
